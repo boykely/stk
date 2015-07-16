@@ -1,0 +1,75 @@
+<?php
+session_start();
+include_once('Utils.php');
+$uri=Utils::getRequestUri();
+$method=Utils::getMethodForm();
+
+if($method=='GET')
+{
+	if($uri=='/stk/login.php')
+	{
+		//cas où l'on est déjà connecté
+		if(isset($_SESSION['mail']))
+		{
+			header('Location:/');
+		}
+		include_once('vue/login/login.php');
+	}
+	else
+	{
+		if(isset($_GET['l_out']))
+		{
+			if($_GET['l_out']=='quit')
+			{
+				session_destroy();
+				$log_out=true;
+				include_once('vue/login/login.php');
+			}
+			else
+			{
+				if(isset($_SESSION['mail']))
+				{
+					header('Location:/stk');
+				}
+				include_once('vue/login/login.php');
+			}
+		}
+		else
+		{
+				if(isset($_SESSION['mail']))
+				{
+					header('Location:/stk');
+				}
+			include_once('vue/login/login.php');
+		}
+	}
+}
+else
+{
+	//Méthode POST
+	$bdd=Utils::BdConnex();
+	if(isset($bdd))
+	{
+		$mail=$_POST['mail'];
+		$pass=$_POST['pass'];
+		$req=$bdd->prepare('select * from admin where mail=:mail and pass=:pass');
+		$req->execute(array('mail'=>strtolower($mail),'pass'=>$pass));
+		$record=$req->fetch();		
+		//var_dump($record);
+		if($record!=false)
+		{
+			//echo $record['mail'].'=>'.$record['pass'];			
+			$req->closeCursor();
+			$_SESSION['mail']=$record['mail'];
+			header('Location:/stk');
+			
+		}
+		else
+		{
+			$log_error=true;
+			$log_mail=$mail;
+			include_once('vue/login/login.php');
+		}
+	}	
+}
+?>
