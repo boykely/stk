@@ -42,8 +42,8 @@ if(!isset($_SESSION["mail"]))
 					<div class="col-md-12">
 						<div class="sem1">
 						<table class="table table-bordered table-condensed">
-							<tr class="info"><td>Janvier</td><td>Fevrier</td><td>Mars</td><td>Avril</td><td>Mai</td><td>Juin</td></tr>
-							<tr><td><input type="checkbox" name="S1_all"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+							<tr class="info"><td></td><td>Janvier</td><td>Fevrier</td><td>Mars</td><td>Avril</td><td>Mai</td><td>Juin</td></tr>
+							<tr><td><input type="checkbox" name="S1_all" onclick="checkSemAll('S1_all','d')"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
 						</table>
 						</div>
 					</div>					
@@ -52,8 +52,8 @@ if(!isset($_SESSION["mail"]))
 					<div class="col-md-12">
 						<div class="sem2">
 						<table class="table table-bordered table-condensed">
-							<tr class="info"><td>Juillet</td><td>Août</td><td>Septembre</td><td>Octobre</td><td>Novembre</td><td>Decembre</td></tr>
-							<tr><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+							<tr class="info"><td></td><td>Juillet</td><td>Août</td><td>Septembre</td><td>Octobre</td><td>Novembre</td><td>Decembre</td></tr>
+							<tr><td><input type="checkbox" name="S2_all" onclick="checkSemAll('S2_all','d')"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
 						</table>
 						</div>
 					</div>	
@@ -69,13 +69,13 @@ if(!isset($_SESSION["mail"]))
 							<input type="datetime" name="date" placeholder="jj/mm/yyyy"/><br/>
 							<table class="table table-bordered table-condensed">
 							<tr class="info"><td></td><td>Janvier</td><td>Fevrier</td><td>Mars</td><td>Avril</td><td>Mai</td><td>Juin</td></tr>
-							<tr><td><input type="checkbox" name="S1_all"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+							<tr><td><input type="checkbox" name="S1_all" onclick="checkSemAll('S1_all','n')"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
 							</table>
 							<table class="table table-bordered table-condensed">
 							<tr class="info"><td></td><td>Juillet</td><td>Août</td><td>Septembre</td><td>Octobre</td><td>Novembre</td><td>Decembre</td></tr>
-							<tr><td><input type="checkbox" name="S2_all"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
+							<tr><td><input type="checkbox" name="S2_all" onclick="checkSemAll('S2_all','n')"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
 							</table>
-							<input type="button" class="button" name="btn_insert" value="Entrer"/>
+							<input type="button" class="button" name="btn_insert" value="Entrer" onclick="fillSem();alert(data_1);alert(data_2);"/>
 						</fieldset>						
 						</form>	
 					</div>									
