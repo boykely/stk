@@ -4,19 +4,22 @@ var data_2=[];
 $(document).ready(function(){		
 	var p=new Pagination(parseInt($('input[name="total"]').val()),parseInt($('input[name="npp"]').val()),3,$('input[name="uri"]').val());
 	p.create('pagination');
-	$('.takona').width($('.f1').width()).height($('.f1').height()).addClass('takona');
+	$('.takona').width($('.tk').width()).height($('.tk').height()).addClass('takona');
+	$('.loading').width($('.container').width()).height($('.container').height());
 })
 
-function updateArchives(id){
-	console.log('Recup '+id);
-	var data=new FormData();
-	data.append('id',id);
+function updateArchives(id){	
+	var d=new FormData();
+	d.append('id',id);
 	$.ajax({
 		url:'db.php',
-		type:'post',
-		data:data,
+		method:'post',
+		data:d,
+		processData:false,
+		contentType:false,
 		success:function(data){
-			$('.takona').removeClass('takona');
+			alert(data);
+			$('.takona').addClass('takona_top');
 		},
 		error:function(data){
 			alert('Recup données échouées');
@@ -38,6 +41,7 @@ function checkSemAll(id,type){
 	}		
 };
 function fillSem(){
+	$('.loading').addClass('loading_top');
 	$($('input[name="S1_all"]')[1]).parent().parent().children().each(function(index,elt){if(index!=0){data_1[index-1]=$(elt).children().get(0).checked;}});
 	$($('input[name="S2_all"]')[1]).parent().parent().children().each(function(index,elt){if(index!=0){data_2[index-1]=$(elt).children().get(0).checked;}});
 };

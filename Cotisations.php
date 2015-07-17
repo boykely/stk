@@ -17,21 +17,21 @@ if(!isset($_SESSION["mail"]))
 <script type="text/javascript" src="js/pagination.js"></script>
 </head>
 <body>
-	<div class="container">	
+	<div class="container">		
 		<div class="page-header text-center">
 			<h4>"Hitory ny anaranao amin'ny rahalahiko aho." <small>Sal 22,22a</small></h4>
 		</div>
 		<div class="row">			
-					
+			<div class="loading"><img src="images/ajax-loader.gif"/></div>		
 			<div class="col-md-6 col-xs-12 ">			
 				<?php				
 				include_once("controller/toebola/cotisations.php");				
 				?>				
 			</div>
-			<div class="col-md-6 col-xs-12">
+			<div class="col-md-6 col-xs-12 tk">
+			<div class="takona"></div>
 				<form class="f1">
-				<fieldset><legend>Archives</legend>
-				<div class="takona"></div>
+				<fieldset><legend>Archives</legend>				
 				<div class="row">
 					<div class="col-md-1">
 						<select>
@@ -75,7 +75,7 @@ if(!isset($_SESSION["mail"]))
 							<tr class="info"><td></td><td>Juillet</td><td>Août</td><td>Septembre</td><td>Octobre</td><td>Novembre</td><td>Decembre</td></tr>
 							<tr><td><input type="checkbox" name="S2_all" onclick="checkSemAll('S2_all','n')"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
 							</table>
-							<input type="button" class="button" name="btn_insert" value="Entrer" onclick="fillSem();alert(data_1);alert(data_2);"/>
+							<input type="button" class="button" name="btn_insert" value="Entrer" onclick="fillSem();"/>
 						</fieldset>						
 						</form>	
 					</div>									
