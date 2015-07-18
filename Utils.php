@@ -10,6 +10,12 @@ function echo_($texte)
 class Utils
 {
 	public static $DB_ERROR;
+	public static function CheckSession(){
+		if(!isset($_SESSION["mail"]))
+		{
+			header('Location:/stk/login.php?origin='.urlencode($_SERVER['REQUEST_URI']));
+		}
+	}
 	public static function getRequestUri()
 	{	
 		return $_SERVER['REQUEST_URI'];

@@ -5,5 +5,6 @@ foreach($_SERVER as $cle=>$val)
 {
 	echo $cle.' : '.$val.'<br/>';
 }
-
+echo '__________________________<br/>';
+echo __DIR__;
 ?>

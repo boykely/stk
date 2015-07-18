@@ -42,6 +42,12 @@
 						</div>
 					</div>
 					<div class="panel-footer">
+						<?php
+							if(isset($url))
+							{
+								echo '<input type="hidden" name="origin" value="'.$url.'"/>';
+							}
+						?>
 						<input type="submit" value="Se connecter" class="btn btn-default active"/>
 					</div>				
 				</div>

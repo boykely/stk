@@ -6,6 +6,12 @@ $method=Utils::getMethodForm();
 
 if($method=='GET')
 {
+		$url=NULL;
+		if(isset($_GET['origin']))
+		{
+			$url=urldecode($_GET['origin']);
+			
+		}
 	if($uri=='/stk/login.php')
 	{
 		//cas où l'on est déjà connecté
@@ -33,7 +39,7 @@ if($method=='GET')
 				}
 				include_once('vue/login/login.php');
 			}
-		}
+		}		
 		else
 		{
 				if(isset($_SESSION['mail']))
@@ -52,6 +58,7 @@ else
 	{
 		$mail=$_POST['mail'];
 		$pass=$_POST['pass'];
+		$origin=$_POST['origin'];
 		$req=$bdd->prepare('select * from admin where mail=:mail and pass=:pass');
 		$req->execute(array('mail'=>strtolower($mail),'pass'=>$pass));
 		$record=$req->fetch();		
@@ -61,7 +68,10 @@ else
 			//echo $record['mail'].'=>'.$record['pass'];			
 			$req->closeCursor();
 			$_SESSION['mail']=$record['mail'];
-			header('Location:/stk');
+			if(isset($origin))
+				header('Location:'.$origin);
+			else
+				header('Location:/stk');
 			
 		}
 		else

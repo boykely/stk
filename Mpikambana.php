@@ -1,8 +1,6 @@
 ﻿<?php  session_start();
-if(!isset($_SESSION["mail"]))
-{
-	header('Location:/stk/login.php');
-}
+include_once('Utils.php');
+Utils::CheckSession();
 ?>
 <!DOCTYPE html>
 <html>
