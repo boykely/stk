@@ -73,6 +73,7 @@ Utils::CheckSession();
 							<tr><td><input type="checkbox" name="S2_all" onclick="checkSemAll('S2_all','n')"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td><td><input type="checkbox"/></td></tr>
 							</table>
 							<input type="button" class="button" name="btn_insert" value="Entrer" onclick="fillSem();"/>
+							<input type="hidden" id="id" value=""/>
 						</fieldset>						
 						</form>	
 					</div>									

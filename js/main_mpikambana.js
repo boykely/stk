@@ -4,13 +4,16 @@ var data_2=[];
 $(document).ready(function(){		
 	var p=new Pagination(parseInt($('input[name="total"]').val()),parseInt($('input[name="npp"]').val()),3,$('input[name="uri"]').val());
 	p.create('pagination');
+	//classe .takona miasa amin'ny manakona formulaire
 	$('.takona').width($('.tk').width()).height($('.tk').height()).addClass('takona');
+	//classe .loading miasa amin'ny image gif chargement
 	$('.loading').width($('.container').width()).height($('.container').height());
 })
 
 function updateArchives(id){	
 	var d=new FormData();
 	d.append('id',id);
+	d.append('type','1');
 	$.ajax({
 		url:'db.php',
 		method:'post',
@@ -18,11 +21,13 @@ function updateArchives(id){
 		processData:false,
 		contentType:false,
 		success:function(data){
-			alert(data);
+			var data=jQuery.parseJSON(data);
+			//console.log(data);			
+			$('#id').val(data.data.id);
 			$('.takona').addClass('takona_top');
 		},
 		error:function(data){
-			alert('Recup données échouées');
+			alert('Recup données échouées. Veuillez rafraîchir la page!');
 		}
 	});
 }
@@ -44,4 +49,22 @@ function fillSem(){
 	$('.loading').addClass('loading_top');
 	$($('input[name="S1_all"]')[1]).parent().parent().children().each(function(index,elt){if(index!=0){data_1[index-1]=$(elt).children().get(0).checked;}});
 	$($('input[name="S2_all"]')[1]).parent().parent().children().each(function(index,elt){if(index!=0){data_2[index-1]=$(elt).children().get(0).checked;}});
+	var d=new FormData();
+	var id=$('#id').val();
+	d.append('id',id);
+	d.append('type','2');
+	$.ajax({
+		url:'db.php',
+		method:'post',
+		data:d,
+		processData:false,
+		contentType:false,
+		success:function(data){			
+			$('.loading').removeClass('loading_top');
+			
+		},
+		error:function(data){
+			alert('La mise à jour a echoué');
+		}
+	});
 };
