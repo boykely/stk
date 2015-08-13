@@ -1,7 +1,0 @@
-hébergeur gratuit:olympe.in
-nom d'utilisateur: valimo_ral
-mdp:valimo_ral
-serveur BD:sql2.olympe.in
-user:lhxxznsg
-mdp:valimo_ral
-dbname:lhxxznsg
