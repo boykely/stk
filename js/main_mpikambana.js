@@ -21,6 +21,7 @@ function updateArchives(id){
 		processData:false,
 		contentType:false,
 		success:function(data){
+			console.log(data);			
 			var data=jQuery.parseJSON(data);
 			//console.log(data);			
 			$('#id').val(data.data.id);
@@ -53,6 +54,10 @@ function fillSem(){
 	var id=$('#id').val();
 	d.append('id',id);
 	d.append('type','2');
+	d.append('data_1',data_1);
+	d.append('data_2',data_2);
+	d.append('year',$('input[name="year"]').val());
+	d.append('date',$('input[name="date"]').val());
 	$.ajax({
 		url:'db.php',
 		method:'post',
@@ -60,11 +65,14 @@ function fillSem(){
 		processData:false,
 		contentType:false,
 		success:function(data){			
-			$('.loading').removeClass('loading_top');
-			
+			$('.loading').removeClass('loading_top');			
+			data_1=[];
+			data_2=[];
 		},
 		error:function(data){
 			alert('La mise à jour a echoué');
+			data_1=[];
+			data_2=[];
 		}
 	});
 };
