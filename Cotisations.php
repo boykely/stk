@@ -31,9 +31,8 @@ Utils::CheckSession();
 				<fieldset><legend>Archives</legend>				
 				<div class="row">
 					<div class="col-md-1">
-						<select>
-							<option>Misafidiana taona</option>
-							<option>2012</option>
+						<select name="archiveYear">
+							<option>Misafidiana taona</option>							
 						</select>
 					</div>
 					<div class="col-md-12">
@@ -62,7 +61,7 @@ Utils::CheckSession();
 					<form class="f2">
 						<fieldset>
 						<legend>Nouvelle entrée</legend>
-							<input type="text" placeholder="Taona" name="year" value=""/><br/>
+							<input type="text" placeholder="Taona" name="year" /><br/>
 							<input type="datetime" name="date" placeholder="jj/mm/yyyy"/><br/>
 							<table class="table table-bordered table-condensed">
 							<tr class="info"><td></td><td>Janvier</td><td>Fevrier</td><td>Mars</td><td>Avril</td><td>Mai</td><td>Juin</td></tr>

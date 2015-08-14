@@ -68,6 +68,7 @@ function fillSem(){
 			$('.loading').removeClass('loading_top');			
 			data_1=[];
 			data_2=[];
+			data=jQuery.parseJSON(data);
 		},
 		error:function(data){
 			alert('La mise à jour a echoué');

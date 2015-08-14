@@ -1,5 +1,6 @@
 <?php session_start();
 include_once('model/toebola/cotisations.php');
+include_once('constantes.php');
 function getCotisation($data_1,$data_2)
 {
 	$res='';
@@ -12,6 +13,18 @@ function getCotisation($data_1,$data_2)
 		$res.=$data_2[$i]=='true'?'1':'0';
 	}
 	return $res;
+}
+function getTotal($mois)
+{
+	$m=0;
+	for($i=0;$i<strlen($mois);$i++)
+	{
+		if($mois[$i]=='1')
+		{
+			$m+=500;
+		}
+	}
+	return $m;
 }
 //json no tokony ho retour ato fa tsy chaîne de texte tsotra
 if(!isset($_SESSION['mail']))
@@ -46,18 +59,32 @@ else
 				//2 midika mampiditra cotisation vaovao
 				if(!isset($_POST['data_1']) || !isset($_POST['data_2']))
 				{
-					echo '{"isAuthenticated":"true","data":{}}';
+					echo '{"isAuthenticated":"true","error":{"message":"data error"}}';
 					ob_flush();
+					exit(0);
 				}
-				if(!isset($_POST['year']) || !isset($_POST['date']))
+				if(strlen($_POST['year'])!=4 || $_POST['year']=='' )
 				{
-					echo '{"isAuthenticated":"true","data":{}}';
+					echo '{"isAuthenticated":"true","error":{"message":"not a year"}}';
 					ob_flush();
+					exit(0);
 				}
-				$data_1=explode(",",$_POST['data_1']);
-				$data_2=explode(",",$_POST['data_2']);
-				$mois=getCotisation($data_1,$data_2);
-				echo $mois;
+				try
+				{
+					$data_1=explode(",",$_POST['data_1']);
+					$data_2=explode(",",$_POST['data_2']);
+					$mois=getCotisation($data_1,$data_2);
+					$total=getTotal($mois);
+					echo $mois.'//'.$total.'<br/>'.isset($_POST['year']);
+					$cotis=new Cotisation();					
+					$cotis->insert($_POST['id'],$mois,$_POST['year'],$total);
+				}
+				catch(Exception $e)
+				{
+					echo '{"isAuthenticated":"true","error":{"message":"'.$e->getMessage().'"}}';
+					ob_flush();
+				}			
+				echo '{"isAuthenticated":"true","inserted":"true"}';
 			}
 			else
 			{
