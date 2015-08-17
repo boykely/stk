@@ -6,20 +6,25 @@
 	public $rows;
 	public function __construct()
 	{
-		$this->bd=new PDO(CONNEX_STRING,DB_USER,DB_PASS);
-		echo 'init';
+		$this->bd=new PDO(CONNEX_STRING,DB_USER,DB_PASS);		
 	}
 	public function closeConnection(){
 		$this->records->closeCursor();
 		$this->bd=Null;
 	}
-	public function getAll($id){
-		$this->bd=new PDO(CONNEX_STRING,DB_USER,DB_PASS);
-		$req=$this->bd->prepare('select ID,ANNEE,MOIS,TOTAL from cotisations where ID_MEMBRE=:id_membre');
-		$req->execute(array('id_membre'=>$id));
-		$this->records=$req;
-		return $this->records;
-	}
+	public function getAll($id){	
+            /*For best user performance we will limit result to 5 only*/
+		$cmd=$this->bd->prepare('select ID_MEMBRE,ANNEE,MOIS,TOTAL from cotisations where ID_MEMBRE=:id_membre limit 0,5');
+		$cmd->execute(array('id_membre'=>$id));
+                $tab=array();
+		while($record=$cmd->fetch())
+                {
+                    $item=array('id'=>$id,'data'=>array('annee'=>$record['ANNEE'],'mois'=>$record['MOIS']));  
+                    $tab[]=$item;
+                }
+                $cmd->closeCursor();
+		return $tab;
+	}        
 	public function insert($membre,$mois,$annee,$total)
 	{		
 		try
