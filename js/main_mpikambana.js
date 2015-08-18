@@ -2,8 +2,7 @@
 var data_1=[];
 var data_2=[];
 var Membres={
-    id:undefined,
-    data:[]
+    //id:{info:undefined,data:[]}    
 };
 $(document).ready(function(){		
 	var p=new Pagination(parseInt($('input[name="total"]').val()),parseInt($('input[name="npp"]').val()),3,$('input[name="uri"]').val());
@@ -14,21 +13,35 @@ $(document).ready(function(){
 	$('.loading').width($('.container').width()).height($('.container').height());
 })
 
-function updateArchives(id){	
+function updateArchives(id){
+        resetSelect();
+        resetCheckboxSemestre();
+        if(typeof Membres[id]!='undefined'){
+            if(typeof Membres[id].info!='undefined' && Membres[id].data.length!=0){
+                updateSelect(Membres[id].data);
+                return;
+            }
+        }        
 	var d=new FormData();
 	d.append('id',id);
-	d.append('type','1');
+	d.append('type','1');        
 	$.ajax({
 		url:'db.php',
 		method:'post',
 		data:d,
 		processData:false,
 		contentType:false,
-		success:function(data){
-			console.log(data);			
-			var data=jQuery.parseJSON(data);
-			//console.log(data);			
-			$('#id').val(data.data.id);
+		success:function(data){						
+			data=jQuery.parseJSON(data);                        
+                        if(!data.isAuthenitcated)return;
+                        Membres[data.result.id]={
+                            info:data.result.id,
+                            data:data.result.data
+                        };
+                        if(data.result.data.length!=0){
+                            updateSelect(data.result.data);
+                        }
+			$('#id').val(data.result.id);
 			$('.takona').addClass('takona_top');
 		},
 		error:function(data){
@@ -56,8 +69,8 @@ function fillSem(){
 		return;
 	}
 	$('.loading').addClass('loading_top');
-	$($('input[name="S1_all"]')[1]).parent().parent().children().each(function(index,elt){if(index!=0){data_1[index-1]=$(elt).children().get(0).checked;}});
-	$($('input[name="S2_all"]')[1]).parent().parent().children().each(function(index,elt){if(index!=0){data_2[index-1]=$(elt).children().get(0).checked;}});
+	$($('input[name="S1_all"]')[0]).parent().parent().children().each(function(index,elt){if(index!=0){data_1[index-1]=$(elt).children().get(0).checked;}});
+	$($('input[name="S2_all"]')[0]).parent().parent().children().each(function(index,elt){if(index!=0){data_2[index-1]=$(elt).children().get(0).checked;}});
 	var d=new FormData();
 	var id=$('#id').val();
 	d.append('id',id);
@@ -90,4 +103,23 @@ function checkYear(year){
 		return true;
 	}
 	return false;
+}
+function resetSelect(){
+    $('select[name="archiveYear"]').empty();
+}
+function resetCheckboxSemestre(){
+    $($('input[name="S1_all"]')[0]).parent().parent().children().each(function(index,elt){$(elt).children().get(0).checked=false;});
+    $($('input[name="S2_all"]')[0]).parent().parent().children().each(function(index,elt){$(elt).children().get(0).checked=false;});
+}
+function updateSelect(data){  
+    $('select[name="archiveYear"]').append('<option>Misafidiana taona</option>');
+    for(var i=0;i<data.length;i++){
+        var addSelect='<option value="'+data[i].id+'_'+data[i].data.annee+'">'+data[i].data.annee+'</option>';
+        $('select[name="archiveYear"]').append(addSelect);   
+    }    
+}
+function selectArchiveOnchange(elt){
+    if(elt.value.trim()!=''){
+        console.log(elt.value.split('_')[1]);
+    }
 }

@@ -52,7 +52,7 @@ else
 				// 1 midika fakana information cotisation momba user iray
                             $cotis=new Cotisation();
                             $membreData=$cotis->getAll($_POST['id']);
-                            $tab=array('isAuthenitcated'=>'true','data'=>array('id'=>$_POST['id'],'data'=>$membreData));
+                            $tab=array('isAuthenitcated'=>'true','result'=>array('id'=>$_POST['id'],'data'=>$membreData));
                             echo json_encode($tab);
 			}
 			else if($_POST['type']=='2')

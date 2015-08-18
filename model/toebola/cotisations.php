@@ -14,7 +14,8 @@
 	}
 	public function getAll($id){	
             /*For best user performance we will limit result to 5 only*/
-		$cmd=$this->bd->prepare('select ID_MEMBRE,ANNEE,MOIS,TOTAL from cotisations where ID_MEMBRE=:id_membre limit 0,5');
+                
+		$cmd=$this->bd->prepare('select ID_MEMBRE,ANNEE,MOIS,TOTAL from cotisations where ID_MEMBRE=:id_membre limit 0,'.LimitCotisation);
 		$cmd->execute(array('id_membre'=>$id));
                 $tab=array();
 		while($record=$cmd->fetch())

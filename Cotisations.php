@@ -31,8 +31,8 @@ Utils::CheckSession();
 				<fieldset><legend>Archives</legend>				
 				<div class="row">
 					<div class="col-md-1">
-						<select name="archiveYear">
-							<option>Misafidiana taona</option>							
+                                            <select name="archiveYear" onchange="selectArchiveOnchange(this);" style="width: 150px;">
+														
 						</select>
 					</div>
 					<div class="col-md-12">

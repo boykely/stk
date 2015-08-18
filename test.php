@@ -11,7 +11,7 @@ include_once('model/toebola/cotisations.php');
 include_once('constantes.php');
 $cotis=new Cotisation();
                             $membreData=$cotis->getAll('13');
-                            $tab=array('isAuthenitcated'=>'true','data'=>array('id'=>'"13"','data'=>$membreData));
+                            $tab=array('isAuthenitcated'=>'true','data'=>array('id'=>'13','data'=>$membreData));
                             echo json_encode($tab);
 
 
