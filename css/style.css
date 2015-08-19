@@ -11,7 +11,7 @@ margin-top:10px;
 .mpikambana_lisitra{
 margin:auto;
 height:250px;
-overflow:hidden;
+overflow:auto;
 }
 .pagination_ul{
 list-style-type:none;

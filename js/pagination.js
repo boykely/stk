@@ -58,11 +58,12 @@ function updatePage(last_currentPage,currentPage,uri){
 	var target=$('.pagination');
 	var max=Math.ceil(parseInt($('input[name="total"]').val())/parseInt($('input[name="npp"]').val()));console.log(max);
 	var description='<ul class="pagination_ul pagination">';
+        var recordsPerPage=parseInt($('input[name="npp"]').val());
 	if(currentPage<=1){		
 		for(var i=1;i<=max;i++){
 			//une fois notre base de donn�es se multiplie, on augmentera la valeur "3" pour la pagination
 			if(i<=max){
-				description+='<li><a href="'+uri+'?npp='+this.recordsPerPage+'&page='+i+'" onclick="getData(this,\''+uri+'\');return false;">'+i+'</a></li>';
+				description+='<li><a href="'+uri+'?npp='+recordsPerPage+'&page='+i+'" onclick="getData(this,\''+uri+'\');return false;">'+i+'</a></li>';
 			}			
 		}		
 	}
@@ -70,7 +71,7 @@ function updatePage(last_currentPage,currentPage,uri){
 		for(var i=currentPage-1;i<=(currentPage+1);i++){
 			//une fois notre base de donn�es se multiplie, on augmentera la valeur "3" pour la pagination
 			if(i<=max){
-				description+='<li><a href="'+uri+'?npp='+this.recordsPerPage+'&page='+i+'" onclick="getData(this,\''+uri+'\');return false;">'+i+'</a></li>';	
+				description+='<li><a href="'+uri+'?npp='+recordsPerPage+'&page='+i+'" onclick="getData(this,\''+uri+'\');return false;">'+i+'</a></li>';	
 			}			
 		}				
 	}
