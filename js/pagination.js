@@ -1,19 +1,20 @@
 /*Une classe pagination
 <param>total</param> Nombre total d'enregistrement dans la BD
 <param>npp</npp> Nombre d'enregistrement par pages
-<param>npm</param> Nombre de page maximal à afficher
+<param>npm</param> Nombre de page maximal ï¿½ afficher
 */
 function Pagination(total,npp,npm,uri){
 	this.records=total;
 	this.recordsPerPage=npp;
 	this.pages=Math.ceil(total/npp);
+        console.log(this.pages);
 	this.npm=npm;
-	/*id est l'élément contenant la pagination*/
+	/*id est l'ï¿½lï¿½ment contenant la pagination*/
 	this.create=function(id){
 		var target=$('.'+id+'');
 		var description='<ul class="pagination_ul pagination">';
 		for(var i=1;i<=this.pages;i++){
-			//une fois notre base de données se multiplie, on augmentera la valeur "3" pour la pagination
+			//une fois notre base de donnï¿½es se multiplie, on augmentera la valeur "3" pour la pagination
 			if(i<=this.npm){
 				description+='<li><a href="'+uri+'?npp='+this.recordsPerPage+'&page='+i+'" onclick="getData(this,\''+uri+'\');return false;">'+i+'</a></li>';
 			}			
@@ -28,7 +29,7 @@ function Pagination(total,npp,npm,uri){
 	
 	};
 };
-/* Pour extraire les données par javascript dans la BD
+/* Pour extraire les donnï¿½es par javascript dans la BD
 <param>elt</param> URL 
 */
 function getData(elt,uri){	
@@ -49,7 +50,7 @@ function getData(elt,uri){
 		}
 	});
 };
-/*Pour regénérer les paginations lors de navigation
+/*Pour regï¿½nï¿½rer les paginations lors de navigation
 <param>currentPage</param> Le numero de page actuellement visible
 */
 function updatePage(last_currentPage,currentPage,uri){
@@ -58,16 +59,16 @@ function updatePage(last_currentPage,currentPage,uri){
 	var max=Math.ceil(parseInt($('input[name="total"]').val())/parseInt($('input[name="npp"]').val()));console.log(max);
 	var description='<ul class="pagination_ul pagination">';
 	if(currentPage<=1){		
-		for(var i=1;i<=3;i++){
-			//une fois notre base de données se multiplie, on augmentera la valeur "3" pour la pagination
-			if(i<=3){
+		for(var i=1;i<=max;i++){
+			//une fois notre base de donnï¿½es se multiplie, on augmentera la valeur "3" pour la pagination
+			if(i<=max){
 				description+='<li><a href="'+uri+'?npp='+this.recordsPerPage+'&page='+i+'" onclick="getData(this,\''+uri+'\');return false;">'+i+'</a></li>';
 			}			
 		}		
 	}
 	else{
 		for(var i=currentPage-1;i<=(currentPage+1);i++){
-			//une fois notre base de données se multiplie, on augmentera la valeur "3" pour la pagination
+			//une fois notre base de donnï¿½es se multiplie, on augmentera la valeur "3" pour la pagination
 			if(i<=max){
 				description+='<li><a href="'+uri+'?npp='+this.recordsPerPage+'&page='+i+'" onclick="getData(this,\''+uri+'\');return false;">'+i+'</a></li>';	
 			}			

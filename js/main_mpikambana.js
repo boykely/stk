@@ -5,7 +5,7 @@ var Membres={
     //id:{info:undefined,data:[]}    
 };
 $(document).ready(function(){		
-	var p=new Pagination(parseInt($('input[name="total"]').val()),parseInt($('input[name="npp"]').val()),3,$('input[name="uri"]').val());
+	var p=new Pagination(parseInt($('input[name="total"]').val()),parseInt($('input[name="npp"]').val()),2,$('input[name="uri"]').val());
 	p.create('pagination');
 	//classe .takona miasa amin'ny manakona formulaire
 	$('.takona').width($('.tk').width()).height($('.tk').height()).addClass('takona');
