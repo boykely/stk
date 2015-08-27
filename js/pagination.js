@@ -7,7 +7,6 @@ function Pagination(total,npp,npm,uri){
 	this.records=total;
 	this.recordsPerPage=npp;
 	this.pages=Math.ceil(total/npp);
-        console.log(this.pages);
 	this.npm=npm;
 	/*id est l'�l�ment contenant la pagination*/
 	this.create=function(id){
