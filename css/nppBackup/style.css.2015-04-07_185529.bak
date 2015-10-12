@@ -1,0 +1,9 @@
+.col1{
+background:red;
+}
+.col2{
+background:green;
+}
+.col3{
+background:black;
+}

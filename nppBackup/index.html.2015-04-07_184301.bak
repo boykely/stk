@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/>
+<title>Bootstrap</title>
+<link rel="stylesheet" href="/Bootstrap/css/bootstrap.css" type="text/css"/>
+<link rel="stylesheet" href="/Bootstrap/css/bootstrap-theme.css" type="text/css"/>
+<link rel="stylesheet" href="/Bootstrap/css/style.css" type="text/css"/>
+<script type="text/javascript" src="/Bootstrap/js/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="/Bootstrap/js/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container">		
+		<div class="row">
+			<div class="col-md-12 col-xs-12 text-center">
+				<h1>First bootstrap on Desktop</h1>
+			</div>
+			<div class="col-md-12 col-xs-6 col1">
+				<h1>Column 1</h1>
+			</div>
+			<div class="col-md-12 col-xs-6 col2">
+				<h1>Column 2</h1>
+			</div>
+			<div class="col-md-12 cik-xs-12 col3">
+				<h1>Column 3</h1>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

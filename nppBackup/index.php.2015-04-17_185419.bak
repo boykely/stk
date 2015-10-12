@@ -1,0 +1,39 @@
+﻿<?php session_start();?>
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/>
+<title>STK Ambavahadimitafo</title>
+<link rel="stylesheet" href="/Bootstrap/css/bootstrap.css" type="text/css"/>
+<link rel="stylesheet" href="/Bootstrap/css/bootstrap-theme.css" type="text/css"/>
+<link rel="stylesheet" href="/Bootstrap/css/style.css" type="text/css"/>
+<script type="text/javascript" src="/Bootstrap/js/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="/Bootstrap/js/bootstrap.js"></script>
+</head>
+<body>	
+	<div class="container">	
+		<div class="page-header text-center">
+			<h4>"Hitory ny anaranao amin'ny rahalahiko aho." <small>Sal 22,22a</small></h4>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-xs-6">
+				<div class="thumbnail">
+					<h3 class="text-center">Mpikambana</h3>
+					<div class="caption">
+						<p>Raha hijery ny lisitry ny mpikambana</p>
+						<a href="#" class="btn btn-info">Alefa</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3 col-xs-6">
+				<div class="thumbnail">
+					<h3 class="text-center">Toe-bola</h3>
+					<div class="caption">
+						<p>Raha hijery ny teo-bolan'ny sampana STK</p>
+						<a href="#" class="btn btn-info">Alefa</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
