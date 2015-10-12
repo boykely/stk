@@ -1,12 +1,15 @@
-﻿<div class="panel panel-default hh" id="ct">
+﻿
+<div class="panel panel-default hh" id="ct">
 	<div class="retour text-center"><h4>Fiche d'inscription</h4></div><hr/>
 		<div class="media">
 			<div class="" style="display:none;">
 				<a href="#" onclick="">Parcourir</a>
 			</div>
+			
 			<img src="" alt="Importer une image" id="photo" height="160" width="160" class="media-object pull-right"/>
+			
 			<div class="media-body">
-				<form method="post" action="insertion1.php" class="form">
+				<form method="POST" action="insertion1.php" class="form">
 					<div class="form-group">
 						<label for="nom" class="col-md-3">Nom *: </label><input type="text" id="nom" name="nom" value="" />
 					</div>
@@ -20,15 +23,13 @@
 						<label for="prof" class="col-md-3">Integration *:</label><input type="text" id="itgr" name="itgr"/>
 					</div>
 					<div class="form-group">
-						<label for="tel" class="col-md-3">Telephone *:</label><input type="text" id="tel" name="tel"/>
-					</div>
-					<div class="form-group">
 						<label for="antony" class="col-md-3">Raisons *:</label><textarea id="antony" name="antony" rows="10" cols="20"></textarea>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3"></label><input type="submit" id="record" class="btn btn-default" value="Enregistrer" name="record"/>
 					</div>
 				</form>
+			
 			</div>
 		</div>
 </div>
