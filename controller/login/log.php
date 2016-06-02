@@ -6,12 +6,12 @@ $method=Utils::getMethodForm();
 
 if($method=='GET')
 {
-		$url=NULL;
-		if(isset($_GET['origin']))
-		{
-			$url=urldecode($_GET['origin']);
+	$url=NULL;//ce variable n'est pas encore utilisé dans ce code mais peut être utilisé dans le future
+	if(isset($_GET['origin']))
+	{
+		$url=urldecode($_GET['origin']);
 			
-		}
+	}
 	if($uri=='/stk/login.php')
 	{
 		//cas où l'on est déjà connecté
@@ -23,6 +23,7 @@ if($method=='GET')
 	}
 	else
 	{
+		//pour la deconnexion: /stk/login.php?l_out=quit
 		if(isset($_GET['l_out']))
 		{
 			if($_GET['l_out']=='quit')
@@ -76,6 +77,7 @@ else
 		}
 		else
 		{
+			//ces variables sont utilisés dans la vue pour afficher une erreur
 			$log_error=true;
 			$log_mail=$mail;
 			include_once('vue/login/login.php');
